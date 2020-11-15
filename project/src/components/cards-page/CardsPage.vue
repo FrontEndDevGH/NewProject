@@ -2,9 +2,9 @@
     <div class="cards-page__wrapper">
       <div class="cards-page__header">
         <button class="cards-page__add" @click="addCard">Добавить</button>
-        <button :class="['drag-switcher', {'drag-disabled': isDragDisable}]" @click="disableDrag">
-          {{ dragSwitcherText }}
-        </button>
+        <Switcher
+          @click="disableDrag"
+        />
       </div>
       <CardsList
         class="card-list"
@@ -13,7 +13,7 @@
         @updated="updateCards"
         @showModal="show"
       />
-      <modal name="my-first-modal">
+      <modal name="my-first-modal" adaptive>
         <CardInfo
           :item="currentCard"
         />
@@ -23,12 +23,14 @@
 <script>
 import CardsList from './CardsList.vue'
 import CardInfo from './CardInfo.vue'
+import Switcher from './Switcher.vue'
 
 export default {
   name: 'CardsPage',
   components: {
     CardsList,
-    CardInfo
+    CardInfo,
+    Switcher
   },
   data () {
     return {
@@ -49,9 +51,6 @@ export default {
     }
   },
   computed: {
-    dragSwitcherText () {
-      return this.isDragDisable ? 'Разблокировать' : 'Заблокировать'
-    }
   },
   beforeMount () {
     const savedCardsList = sessionStorage.getItem('cardsArr')
@@ -86,10 +85,12 @@ export default {
     margin-top: 30px;
   }
   &__header {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     margin: auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   &__add {
     width: 130px;
@@ -104,11 +105,5 @@ export default {
       background: #2ed8ba;
     }
   }
-}
-.drag-switcher {
-  width: 120px;
-}
-.drag-disabled {
-  background: gray;
 }
 </style>

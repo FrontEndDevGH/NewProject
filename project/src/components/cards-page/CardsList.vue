@@ -1,7 +1,21 @@
 <template>
   <div>
-    <draggable class="cards-list" v-model="cardsList" group="people" @start.prevent="drag=false" @update="$emit('updated', cardsList)" :move="storMove">
-      <Card @click.native="$emit('showModal', item)" class="card-item" v-for="item in cardsList" :key="item.id" :item="item" />
+    <draggable
+      class="cards-list"
+      v-model="cardsList"
+      group="people"
+      @start.prevent="drag=false"
+      @update="$emit('updated', cardsList)"
+      :move="storMove"
+    >
+      <Card
+        class="card-item"
+        v-for="item in cardsList"
+        :key="item.id"
+        :item="item"
+        :is-drag-disable="isDragDisable"
+        @click.native="$emit('showModal', item)"
+      />
     </draggable>
   </div>
 </template>
@@ -39,12 +53,16 @@ export default {
 </script>
 <style lang="scss">
 .cards-list {
-  width: 100%;
   max-width: 800px;
   display: flex;
-  direction: row;
+  flex-direction: row;
   flex-wrap: wrap;
   margin: 100px auto;
   padding: 10px;
+  justify-content: flex-start;
+
+  @media screen and (max-width: 836px) {
+    justify-content: center;
+  }
 }
 </style>

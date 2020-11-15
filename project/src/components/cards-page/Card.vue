@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div :class="['card', {'card-draggable': isDragDisable}]">
     <div class="card__name">
         {{ item.name }}
     </div>
@@ -19,6 +19,10 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    isDragDisable: {
+      type: Boolean,
+      default: false
     }
   },
   directives: {
@@ -37,10 +41,14 @@ export default {
   margin: 10px;
   overflow: hidden;
   cursor: pointer;
-  transition: .3s;
+  transition: box-shadow .3s;
 
   &:hover {
     box-shadow: 0 0 8px rgba(0,0,0,0.5);
+  }
+
+  &-draggable {
+    background: #f1f1f1;
   }
 
   &__name {

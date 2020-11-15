@@ -1,5 +1,8 @@
 <template>
   <div class="modal">
+    <div class="modal__close" @click="$modal.hide('my-first-modal')">
+      &#10005;
+    </div>
     <div class="modal__name">{{ item.name }}</div>
     <div class="modal__description">{{ item.description }}</div>
   </div>
@@ -19,6 +22,7 @@ export default {
 <style lang="scss">
 .modal {
   padding: 40px 20px;
+  position: relative;
 
   &__name {
     font-size: 20px;
@@ -28,6 +32,17 @@ export default {
 
   &__description {
     font-size: 18px;
+  }
+
+  &__close {
+    font-size: 20px;
+    display: block;
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
   }
 }
 </style>
