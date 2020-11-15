@@ -28,6 +28,10 @@ export default {
   },
   methods: {
     saveCard () {
+      if (!this.fields.name || !this.fields.description) {
+        this.$toast.error('Пожалуйста, заполните все поля формы!', { position: 'top-right' })
+        return
+      }
       this.$emit('saveCard', this.fields)
       this.$router.push({ name: 'CardsPage', params: { newCard: this.fields } })
     },
