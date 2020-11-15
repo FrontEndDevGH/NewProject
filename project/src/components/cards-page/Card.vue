@@ -12,7 +12,7 @@
 import { VueDraggableDirective } from 'vue-draggable'
 
 export default {
-  name: 'CardsList',
+  name: 'Card',
   components: {
   },
   props: {

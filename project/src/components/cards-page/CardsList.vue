@@ -1,7 +1,7 @@
 <template>
   <div>
     <draggable class="cards-list" v-model="cardsList" group="people" @start.prevent="drag=false" @update="$emit('updated', cardsList)" :move="storMove">
-      <Card class="card-item" v-for="item in cardsList" :key="item.id" :item="item" />
+      <Card @click.native="$emit('showModal', item)" class="card-item" v-for="item in cardsList" :key="item.id" :item="item" />
     </draggable>
   </div>
 </template>

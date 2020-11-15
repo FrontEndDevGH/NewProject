@@ -9,19 +9,28 @@
         :cards="cards"
         :is-drag-disable="isDragDisable"
         @updated="updateCards"
+        @showModal="show"
       />
+      <modal name="my-first-modal">
+        <CardInfo
+          :item="currentCard"
+        />
+      </modal>
     </div>
 </template>
 <script>
 import CardsList from './CardsList.vue'
+import CardInfo from './CardInfo.vue'
 
 export default {
   name: 'CardsPage',
   components: {
-    CardsList
+    CardsList,
+    CardInfo
   },
   data () {
     return {
+      currentCard: {},
       cards: [
         {
           name: 'name 1',
@@ -30,21 +39,6 @@ export default {
         },
         {
           name: 'name 2',
-          description: 'description 2',
-          id: `f${(~~(Math.random() * 1e8)).toString(16)}`
-        },
-        {
-          name: 'name 3',
-          description: 'description 2',
-          id: `f${(~~(Math.random() * 1e8)).toString(16)}`
-        },
-        {
-          name: 'name 4',
-          description: 'description 2',
-          id: `f${(~~(Math.random() * 1e8)).toString(16)}`
-        },
-        {
-          name: 'name 5',
           description: 'description 2',
           id: `f${(~~(Math.random() * 1e8)).toString(16)}`
         }
@@ -61,6 +55,10 @@ export default {
     }
   },
   methods: {
+    show (value) {
+      this.currentCard = value
+      this.$modal.show('my-first-modal')
+    },
     disableDrag () {
       this.isDragDisable = !this.isDragDisable
     },
