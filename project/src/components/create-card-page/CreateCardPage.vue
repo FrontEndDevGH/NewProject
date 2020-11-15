@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div class="create-card">
     <CreateCardForm
       @changeName="fields.name = $event"
       @changeDescription="fields.description = $event"
     />
-    <button @click="saveCard" class="save-card">Сохранить</button>
-    <button @click="cancel" class="cancel">Отмена</button>
+    <div class="create-card__buttons">
+      <button @click="saveCard" class="create-card__save">Сохранить</button>
+      <button @click="cancel" class="create-card__cancel">Отмена</button>
+    </div>
   </div>
 </template>
 <script>
@@ -35,3 +37,38 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .create-card {
+    margin-top: 200px;
+
+    &__buttons {
+      width: 300px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__save {
+      width: 130px;
+      padding: 15px 0;
+      border: none;
+      background: #29c2a7;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background: #2ed8ba;
+      }
+    }
+
+    &__cancel {
+      width: 130px;
+      border: 1px solid grey;
+      background: #fff;
+      border-radius: 5px;
+      padding: 15px 0;
+      cursor: pointer;
+    }
+  }
+</style>

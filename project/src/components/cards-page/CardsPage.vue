@@ -1,9 +1,11 @@
 <template>
-    <div class="cards-page-wrapper">
-      <button class="add-card" @click="addCard">Добавить</button>
-      <button :class="['drag-switcher', {'drag-disabled': isDragDisable}]" @click="disableDrag">
-        {{ isDragDisable ? 'Разблокировать' : 'Заблокировать' }}
-      </button>
+    <div class="cards-page__wrapper">
+      <div class="cards-page__header">
+        <button class="cards-page__add" @click="addCard">Добавить</button>
+        <button :class="['drag-switcher', {'drag-disabled': isDragDisable}]" @click="disableDrag">
+          {{ dragSwitcherText }}
+        </button>
+      </div>
       <CardsList
         class="card-list"
         :cards="cards"
@@ -46,6 +48,11 @@ export default {
       isDragDisable: false
     }
   },
+  computed: {
+    dragSwitcherText () {
+      return this.isDragDisable ? 'Разблокировать' : 'Заблокировать'
+    }
+  },
   beforeMount () {
     const savedCardsList = sessionStorage.getItem('cardsArr')
     this.cards = savedCardsList ? JSON.parse(savedCardsList) : this.cards
@@ -73,16 +80,34 @@ export default {
 }
 </script>
 <style lang="scss">
-.cards-page-wrapper {
-  .add-card {
-    width: 100px;
-    border: 1px solid blue;
+.cards-page {
+  &__wrapper {
+    margin-top: 30px;
   }
-  .drag-switcher {
-    width: 120px;
+  &__header {
+    width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
   }
-  .drag-disabled {
-    background: gray;
+  &__add {
+    width: 130px;
+    padding: 15px 0;
+    border: none;
+    background: #29c2a7;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: #2ed8ba;
+    }
   }
+}
+.drag-switcher {
+  width: 120px;
+}
+.drag-disabled {
+  background: gray;
 }
 </style>

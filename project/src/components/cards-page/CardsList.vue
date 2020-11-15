@@ -40,18 +40,11 @@ export default {
 <style lang="scss">
 .cards-list {
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   display: flex;
   direction: row;
   flex-wrap: wrap;
   margin: 100px auto;
-  border: 1px solid gray;
   padding: 10px;
-}
-.card-item {
-  width: 105px;
-  height: 70px;
-  background: gray;
-  margin: 10px;
 }
 </style>
