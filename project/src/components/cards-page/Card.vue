@@ -9,7 +9,6 @@
   </div>
 </template>
 <script>
-import { VueDraggableDirective } from 'vue-draggable'
 
 export default {
   name: 'Card',
@@ -24,9 +23,6 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-  directives: {
-    dragAndDrop: VueDraggableDirective
   }
 }
 </script>

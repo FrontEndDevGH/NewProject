@@ -1,10 +1,20 @@
 <template>
   <div class="card-form">
     <h1 class="card-form__title">Форма создания карточки</h1>
-    <label for="name" class="card-form__field-label">Название</label>
-    <input id="name" class="card-form__field" @input="changeName" v-model="name" />
-    <label for="description" class="card-form__field-label">Описание</label>
-    <textarea id="description" class="card-form__field" @input="changeDescription" v-model="description" />
+    <label for="name">Название</label>
+    <input
+      id="name"
+      class="card-form__field"
+      @input="changeName"
+      v-model="name"
+    />
+    <label for="description">Описание</label>
+    <textarea
+      id="description"
+      class="card-form__field"
+      @input="changeDescription"
+      v-model="description"
+    />
   </div>
 </template>
 <script>

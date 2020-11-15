@@ -3,8 +3,7 @@
     <draggable
       class="cards-list"
       v-model="cardsList"
-      group="people"
-      @start.prevent="drag=false"
+      group="cards"
       @update="$emit('updated', cardsList)"
       :move="storMove"
     >
@@ -51,13 +50,13 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .cards-list {
   max-width: 800px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 100px auto;
+  margin: 50px auto;
   padding: 10px;
   justify-content: flex-start;
 

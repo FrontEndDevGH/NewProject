@@ -22,7 +22,8 @@ export default {
     return {
       fields: {
         name: '',
-        description: ''
+        description: '',
+        id: `f${(~~(Math.random() * 1e8)).toString(16)}`
       }
     }
   },

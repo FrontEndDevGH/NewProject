@@ -2,21 +2,16 @@
     <div class="cards-page__wrapper">
       <div class="cards-page__header">
         <button class="cards-page__add" @click="addCard">Добавить</button>
-        <Switcher
-          @click="disableDrag"
-        />
+        <Switcher @click="disableDrag" />
       </div>
       <CardsList
-        class="card-list"
         :cards="cards"
         :is-drag-disable="isDragDisable"
         @updated="updateCards"
         @showModal="show"
       />
-      <modal name="my-first-modal" adaptive>
-        <CardInfo
-          :item="currentCard"
-        />
+      <modal name="card-info-modal" adaptive>
+        <CardInfo :item="currentCard" />
       </modal>
     </div>
 </template>
@@ -50,8 +45,6 @@ export default {
       isDragDisable: false
     }
   },
-  computed: {
-  },
   beforeMount () {
     const savedCardsList = sessionStorage.getItem('cardsArr')
     this.cards = savedCardsList ? JSON.parse(savedCardsList) : this.cards
@@ -64,7 +57,7 @@ export default {
   methods: {
     show (value) {
       this.currentCard = value
-      this.$modal.show('my-first-modal')
+      this.$modal.show('card-info-modal')
     },
     disableDrag () {
       this.isDragDisable = !this.isDragDisable
@@ -79,19 +72,21 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .cards-page {
   &__wrapper {
     margin-top: 30px;
   }
+
   &__header {
     width: 100%;
     max-width: 800px;
     margin: auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
   }
+
   &__add {
     width: 130px;
     padding: 15px 0;

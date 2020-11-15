@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <div class="modal__close" @click="$modal.hide('my-first-modal')">
+    <div class="modal__close" @click="$modal.hide('card-info-modal')">
       &#10005;
     </div>
     <div class="modal__name">{{ item.name }}</div>
@@ -19,7 +19,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .modal {
   padding: 40px 20px;
   position: relative;
