@@ -57,6 +57,7 @@ export default {
     const savedCardsList = sessionStorage.getItem('cardsArr')
     this.cards = savedCardsList ? JSON.parse(savedCardsList) : this.cards
     if (this.$route.params.newCard) {
+      this.$toast.success('Вы успешно добавили новую карточку!', { position: 'top-right' })
       this.cards.push(this.$route.params.newCard)
       this.updateCards()
     }

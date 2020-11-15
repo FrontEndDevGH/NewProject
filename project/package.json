@@ -15,6 +15,7 @@
     "vue-draggable": "^2.0.6",
     "vue-js-modal": "^2.0.0-rc.6",
     "vue-router": "^3.2.0",
+    "vue-toast-notification": "^0.6.0",
     "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
